@@ -4,8 +4,8 @@ import React from "react";
 
 interface ButtonProp {
   label: string;
-  theme: string;
-  onPress?: () => void;
+  theme?: string;
+  onPress: () => void;
 }
 export default function Button({ label, theme, onPress }: ButtonProp) {
   if (theme === "primary") {
@@ -22,10 +22,7 @@ export default function Button({ label, theme, onPress }: ButtonProp) {
   }
   return (
     <View style={styles.buttonContainer}>
-      <Pressable
-        style={styles.button}
-        onPress={() => alert(`You pressd ${label} button`)}
-      >
+      <Pressable style={styles.button} onPress={onPress}>
         <FontAwesome
           name="picture-o"
           size={18}
