@@ -12,7 +12,7 @@ export default function IconButton({
 }) {
   return (
     <View style={{ borderColor: "white", borderWidth: 1, borderRadius: 8 }}>
-      <Pressable>
+      <Pressable onPress={onPress}>
         <MaterialIcons
           name={icon_name}
           size={30}
