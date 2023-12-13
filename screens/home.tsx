@@ -1,10 +1,15 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, FlatList } from "react-native";
 import Button from "../components/button";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { HomeScreenProp } from "../types";
 export default function Home({ navigation }: HomeScreenProp) {
+  const parts = [
+    { screen: "PartOne", label: "Part One" },
+    { screen: "PartTwo", label: "Part Two" },
+  ];
+
   return (
     <SafeAreaView>
       <View style={styles.homeContainer}>
@@ -15,12 +20,18 @@ export default function Home({ navigation }: HomeScreenProp) {
             button below.
           </Text>
         </View>
-        <Button
-          label="Part One"
-          theme="primary"
-          onPress={() => navigation.navigate("PartOne")}
+        <FlatList
+          data={parts}
+          renderItem={({ item, index }) => (
+            <Button
+              label={item.label}
+              theme="primary"
+              //@ts-ignore
+              onPress={() => navigation.navigate(item.screen)}
+              key={index}
+            />
+          )}
         />
-        <Button label="Part Two" theme="primary" onPress={() => {}} />
       </View>
       <StatusBar />
     </SafeAreaView>
