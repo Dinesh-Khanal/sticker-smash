@@ -47,14 +47,16 @@ export default function PartTwo({ navigation }: PartTwoProp) {
     <SafeAreaView style={styles.productContainer}>
       <Text style={styles.heading}>Product List</Text>
       <FlatList
+        columnWrapperStyle={{ justifyContent: "space-between" }}
         data={pList}
+        numColumns={2}
         renderItem={({ item }) => (
           <ItemList
+            key={item.id}
             product={item}
             onPress={() => navigation.navigate("Home")}
           />
         )}
-        horizontal
       />
       <StatusBar />
     </SafeAreaView>
@@ -71,7 +73,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     padding: 12,
-    marginRight: 12,
+    marginBottom: 12,
   },
   title: {
     fontSize: 14,
