@@ -8,19 +8,17 @@ import {
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useState } from "react";
-import { products } from "../products";
+import { useState, useEffect } from "react";
+import { fetchProduct } from "../redux/product-slice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { ProductType } from "../types";
+import { PartTwoProp } from "../types";
 
-type ProductProp = {
-  id: number;
-  image: string;
-  title: string;
-};
 const ItemList = ({
   product,
   onPress,
 }: {
-  product: ProductProp;
+  product: ProductType;
   onPress: () => void;
 }) => {
   return (
@@ -35,15 +33,26 @@ const ItemList = ({
   );
 };
 
-export default function PartTwo() {
-  const [Products] = useState(products);
+export default function PartTwo({ navigation }: PartTwoProp) {
+  const { pList, isLoading, errMessage } = useAppSelector(
+    (state) => state.products
+  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProduct());
+  }, []);
+  if (isLoading) return <Text>Loading...</Text>;
   return (
     <SafeAreaView style={styles.productContainer}>
       <Text style={styles.heading}>Product List</Text>
       <FlatList
-        data={Products}
+        data={pList}
         renderItem={({ item }) => (
-          <ItemList product={item} onPress={() => {}} />
+          <ItemList
+            product={item}
+            onPress={() => navigation.navigate("Home")}
+          />
         )}
         horizontal
       />

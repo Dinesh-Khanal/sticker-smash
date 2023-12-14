@@ -4,6 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { HomeScreenProp } from "../types";
+
 export default function Home({ navigation }: HomeScreenProp) {
   const parts = [
     { screen: "PartOne", label: "Part One" },
