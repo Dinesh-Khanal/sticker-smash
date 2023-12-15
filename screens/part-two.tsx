@@ -54,7 +54,9 @@ export default function PartTwo({ navigation }: PartTwoProp) {
           <ItemList
             key={item.id}
             product={item}
-            onPress={() => navigation.navigate("Home")}
+            onPress={() =>
+              navigation.navigate("ProductDetail", { product: item })
+            }
           />
         )}
       />
