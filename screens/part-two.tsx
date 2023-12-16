@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { fetchProduct } from "../redux/product-slice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { ProductType } from "../types";

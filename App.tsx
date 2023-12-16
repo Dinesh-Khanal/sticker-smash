@@ -8,6 +8,7 @@ import store from "./redux/store";
 import { Button } from "react-native";
 import { RootStackParamList } from "./types";
 import ProductDetail from "./screens/product-detail";
+import Cart from "./screens/cart";
 
 export default function App() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -35,6 +36,7 @@ export default function App() {
               ),
             })}
           />
+          <Stack.Screen name="Cart" component={Cart} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

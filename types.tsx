@@ -5,6 +5,7 @@ export type RootStackParamList = {
   PartOne: { userId: string } | undefined;
   PartTwo: undefined;
   ProductDetail: { product: ProductType };
+  Cart: undefined;
 };
 
 export type HomeScreenProp = NativeStackScreenProps<RootStackParamList, "Home">;
