@@ -6,6 +6,7 @@ export type RootStackParamList = {
   PartTwo: undefined;
   ProductDetail: { product: ProductType };
   Cart: undefined;
+  PartThree: undefined;
 };
 
 export type HomeScreenProp = NativeStackScreenProps<RootStackParamList, "Home">;
@@ -13,6 +14,11 @@ export type HomeScreenProp = NativeStackScreenProps<RootStackParamList, "Home">;
 export type PartOneProp = NativeStackScreenProps<RootStackParamList, "PartOne">;
 
 export type PartTwoProp = NativeStackScreenProps<RootStackParamList, "PartTwo">;
+
+export type PartThreeProp = NativeStackScreenProps<
+  RootStackParamList,
+  "PartThree"
+>;
 
 export type ProductDetailProp = NativeStackScreenProps<
   RootStackParamList,

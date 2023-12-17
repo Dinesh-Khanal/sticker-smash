@@ -9,6 +9,7 @@ export default function Home({ navigation }: HomeScreenProp) {
   const parts = [
     { screen: "PartOne", label: "Part One" },
     { screen: "PartTwo", label: "Part Two" },
+    { screen: "PartThree", label: "Part Three" },
   ];
 
   return (

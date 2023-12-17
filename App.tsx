@@ -9,6 +9,7 @@ import { Button } from "react-native";
 import { RootStackParamList } from "./types";
 import ProductDetail from "./screens/product-detail";
 import Cart from "./screens/cart";
+import PartThree from "./screens/part-three";
 
 export default function App() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -37,6 +38,7 @@ export default function App() {
             })}
           />
           <Stack.Screen name="Cart" component={Cart} />
+          <Stack.Screen name="PartThree" component={PartThree} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
