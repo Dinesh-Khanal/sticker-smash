@@ -10,6 +10,8 @@ import { RootStackParamList } from "./types";
 import ProductDetail from "./screens/product-detail";
 import Cart from "./screens/cart";
 import PartThree from "./screens/part-three";
+import Login from "./screens/login";
+import SignUp from "./screens/sign-up";
 
 export default function App() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -43,6 +45,12 @@ export default function App() {
           />
           <Stack.Screen name="Cart" component={Cart} />
           <Stack.Screen name="PartThree" component={PartThree} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

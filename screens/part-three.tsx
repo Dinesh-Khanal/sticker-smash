@@ -5,8 +5,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS } from "../constants/colors";
 import Button from "../components/button";
 import React from "react";
+import { PartThreeProp } from "../types";
 
-export default function PartThree() {
+export default function PartThree({ navigation }: PartThreeProp) {
   return (
     <SafeAreaView edges={["bottom", "left", "right"]} style={{ flex: 1 }}>
       <LinearGradient
@@ -76,7 +77,11 @@ export default function PartThree() {
           <Text style={[styles.normal, { marginBottom: 16 }]}>
             Calling, Enjoy Safe and private texting
           </Text>
-          <Button theme="primary" label="Join now" onPress={() => {}} />
+          <Button
+            theme="primary"
+            label="Join now"
+            onPress={() => navigation.navigate("SignUp")}
+          />
           <View
             style={{
               flexDirection: "row",
@@ -87,7 +92,7 @@ export default function PartThree() {
             }}
           >
             <Text style={styles.normal}>Already have an account?</Text>
-            <Pressable>
+            <Pressable onPress={() => navigation.navigate("Login")}>
               <Text
                 style={{
                   fontSize: 20,
