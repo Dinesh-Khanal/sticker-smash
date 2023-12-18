@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -77,6 +77,29 @@ export default function PartThree() {
             Calling, Enjoy Safe and private texting
           </Text>
           <Button theme="primary" label="Join now" onPress={() => {}} />
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 12,
+              gap: 6,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={styles.normal}>Already have an account?</Text>
+            <Pressable>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: "500",
+                  color: "#ccf",
+                  textAlign: "center",
+                }}
+              >
+                Login
+              </Text>
+            </Pressable>
+          </View>
         </View>
       </LinearGradient>
       <StatusBar />
