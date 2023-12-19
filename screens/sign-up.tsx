@@ -11,9 +11,24 @@ import { StatusBar } from "expo-status-bar";
 import { COLORS } from "../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 export default function SignUp() {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async () => {
+    if (email && password) {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+      } catch (err: any) {
+        console.log("Error: ", err.message);
+      }
+    }
+  };
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -25,6 +40,8 @@ export default function SignUp() {
           placeholderTextColor={COLORS.black}
           keyboardType="email-address"
           style={styles.input}
+          value={email}
+          onChangeText={(value) => setEmail(value)}
         />
         <Text style={styles.subHeading}>Mobile Number</Text>
         <View style={styles.mobile}>
@@ -42,6 +59,8 @@ export default function SignUp() {
             secureTextEntry={isPasswordShown}
             placeholderTextColor={COLORS.black}
             placeholder="Enter your password"
+            value={password}
+            onChangeText={(value) => setPassword(value)}
           />
           <TouchableOpacity
             onPress={() => setIsPasswordShown(!isPasswordShown)}
@@ -57,7 +76,7 @@ export default function SignUp() {
             )}
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={handleSubmit}>
           <Text
             style={{
               textAlign: "center",
