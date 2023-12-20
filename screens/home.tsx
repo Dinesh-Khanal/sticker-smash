@@ -4,13 +4,18 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { HomeScreenProp } from "../types";
+import { signOut } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 export default function Home({ navigation }: HomeScreenProp) {
   const parts = [
     { screen: "PartOne", label: "Part One" },
     { screen: "PartTwo", label: "Part Two" },
-    { screen: "PartThree", label: "Part Three" },
   ];
+
+  const handleLogout = async () => {
+    await signOut(auth);
+  };
 
   return (
     <SafeAreaView>
@@ -34,6 +39,7 @@ export default function Home({ navigation }: HomeScreenProp) {
             />
           )}
         />
+        <Button label="Sign out" theme="primary" onPress={handleLogout} />
       </View>
       <StatusBar />
     </SafeAreaView>

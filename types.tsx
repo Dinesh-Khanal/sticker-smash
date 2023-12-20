@@ -10,7 +10,16 @@ export type RootStackParamList = {
   Login: undefined;
   SignUp: undefined;
 };
-
+export type Screen =
+  | "Home"
+  | "PartOne"
+  | "PartTwo"
+  | "PartThree"
+  | "ProductDetail"
+  | "Cart"
+  | "Login"
+  | "SignUp"
+  | "ProductDetail";
 export type HomeScreenProp = NativeStackScreenProps<RootStackParamList, "Home">;
 
 export type PartOneProp = NativeStackScreenProps<RootStackParamList, "PartOne">;
