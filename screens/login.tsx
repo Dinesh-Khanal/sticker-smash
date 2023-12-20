@@ -28,7 +28,7 @@ export default function Login() {
   };
 
   return (
-    <View>
+    <View style={{ padding: 22 }}>
       <Text style={styles.subHeading}>Email address</Text>
       <TextInput
         placeholder="Enter your email address"
@@ -38,6 +38,7 @@ export default function Login() {
         value={email}
         onChangeText={(value) => setEmail(value)}
       />
+      <Text style={styles.subHeading}>Password</Text>
       <View style={styles.passwd}>
         <TextInput
           secureTextEntry={isPasswordShown}
@@ -71,6 +72,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderWidth: 1,
     borderRadius: 8,
+    marginBottom: 18,
   },
   subHeading: {
     marginTop: 18,
@@ -86,5 +88,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingLeft: 16,
+    marginBottom: 22,
   },
 });
