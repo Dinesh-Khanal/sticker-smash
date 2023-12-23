@@ -1,39 +1,12 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  FlatList,
-  Pressable,
-} from "react-native";
+import { Text, StyleSheet, Image, FlatList, Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect } from "react";
 import { fetchProduct } from "../redux/product-slice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { ProductType } from "../types";
-import { PartTwoProp } from "../types";
+import { Link } from "expo-router";
 
-const ItemList = ({
-  product,
-  onPress,
-}: {
-  product: ProductType;
-  onPress: () => void;
-}) => {
-  return (
-    <Pressable style={styles.product} onPress={onPress}>
-      <Image
-        source={{ uri: product.image }}
-        resizeMode="contain"
-        style={{ width: 150, height: 150 }}
-      />
-      <Text style={styles.title}>{product.title}</Text>
-    </Pressable>
-  );
-};
-
-export default function PartTwo({ navigation }: PartTwoProp) {
+export default function PartTwo() {
   const { pList, isLoading, errMessage } = useAppSelector(
     (state) => state.products
   );
@@ -51,13 +24,19 @@ export default function PartTwo({ navigation }: PartTwoProp) {
         data={pList}
         numColumns={2}
         renderItem={({ item }) => (
-          <ItemList
-            key={item.id}
-            product={item}
-            onPress={() =>
-              navigation.navigate("ProductDetail", { product: item })
-            }
-          />
+          <Link
+            href={{ pathname: "/product-detail", params: { product: item } }}
+            asChild
+          >
+            <Pressable style={styles.product}>
+              <Image
+                source={{ uri: item.image }}
+                resizeMode="contain"
+                style={{ width: 150, height: 150 }}
+              />
+              <Text style={styles.title}>{item.title}</Text>
+            </Pressable>
+          </Link>
         )}
       />
       <StatusBar />

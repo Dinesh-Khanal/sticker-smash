@@ -3,7 +3,6 @@ import Button from "../components/button";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
-import { HomeScreenProp } from "../types";
 import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { Link } from "expo-router";
