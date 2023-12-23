@@ -16,9 +16,10 @@ import EmojiPicker from "../components/emoji-picker";
 import EmojiList from "../components/emoji-list";
 import EmojiSticker from "../components/emoji-sticker";
 import { PartOneProp } from "../types";
+import { Link } from "expo-router";
 const placeholderImageSource = require("../assets/images/background-image.png");
 
-export default function PartOne({ navigation }: PartOneProp) {
+export default function PartOne() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -91,11 +92,11 @@ export default function PartOne({ navigation }: PartOneProp) {
             onPress={() => setShowAppOptions(true)}
           />
         )}
-        <Button
-          label="Home Screen"
-          theme="primary"
-          onPress={() => navigation.navigate("Home")}
-        />
+        <View style={styles.btn}>
+          <Link href="/">
+            <Text style={{ fontSize: 20, color: "#fff" }}>Home</Text>
+          </Link>
+        </View>
       </View>
       <EmojiPicker
         isVisible={modalVisible}
@@ -124,6 +125,16 @@ const styles = StyleSheet.create({
   footerContainer: {
     flex: 1 / 2,
     padding: 8,
+    justifyContent: "center",
+  },
+  btn: {
+    flexDirection: "row",
+    backgroundColor: "#88f",
+    borderRadius: 6,
+    width: 320,
+    height: 68,
+    marginHorizontal: 20,
+    alignItems: "center",
     justifyContent: "center",
   },
 });

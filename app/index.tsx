@@ -6,11 +6,12 @@ import React from "react";
 import { HomeScreenProp } from "../types";
 import { signOut } from "firebase/auth";
 import { auth } from "../config/firebase";
+import { Link } from "expo-router";
 
-export default function Home({ navigation }: HomeScreenProp) {
+export default function Home() {
   const parts = [
-    { screen: "PartOne", label: "Part One" },
-    { screen: "PartTwo", label: "Part Two" },
+    { screen: "part-one", label: "Part One" },
+    { screen: "part-two", label: "Part Two" },
   ];
 
   const handleLogout = async () => {
@@ -30,13 +31,13 @@ export default function Home({ navigation }: HomeScreenProp) {
         <FlatList
           data={parts}
           renderItem={({ item, index }) => (
-            <Button
-              label={item.label}
-              theme="primary"
-              //@ts-ignore
-              onPress={() => navigation.navigate(item.screen)}
-              key={index}
-            />
+            <View style={styles.btn} key={index}>
+              <Link href={`/${item.screen}`}>
+                <Text style={{ fontSize: 20, color: "#fff" }}>
+                  {item.label}
+                </Text>
+              </Link>
+            </View>
           )}
         />
         <Button label="Sign out" theme="primary" onPress={handleLogout} />
@@ -63,5 +64,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     padding: 12,
+  },
+  btn: {
+    flexDirection: "row",
+    backgroundColor: "#88f",
+    borderRadius: 6,
+    width: 320,
+    height: 68,
+    marginHorizontal: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 4,
   },
 });
