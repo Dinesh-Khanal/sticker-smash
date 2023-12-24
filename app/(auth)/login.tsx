@@ -8,8 +8,8 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";
-import { COLORS } from "../constants/colors";
+import { auth } from "../../config/firebase";
+import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function Login() {

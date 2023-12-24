@@ -1,14 +1,20 @@
 import { View, Text, StyleSheet, Image, Button } from "react-native";
 import React from "react";
-import { ProductDetailProp } from "../types";
-import { useAppDispatch } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { addToCart } from "../redux/cart-slice";
+import { useLocalSearchParams, useRouter } from "expo-router";
 
-export default function ProductDetail({
-  navigation,
-  route,
-}: ProductDetailProp) {
-  const { product } = route.params;
+export default function ProductDetail() {
+  const { id } = useLocalSearchParams();
+  const { pList, isLoading, errMessage } = useAppSelector(
+    (state) => state.products
+  );
+  const router = useRouter();
+  const product = pList.find((item) => item.id.toString() === id);
+  if (isLoading) return <Text>Loading...</Text>;
+  if (!product) {
+    return null;
+  }
   const dispatch = useAppDispatch();
   return (
     <View style={styles.detailContainer}>
@@ -28,10 +34,7 @@ export default function ProductDetail({
             title="Add item"
             onPress={() => dispatch(addToCart(product.id))}
           />
-          <Button
-            title="Go to cart"
-            onPress={() => navigation.navigate("Cart")}
-          />
+          <Button title="Go to cart" onPress={() => router.push("/cart")} />
         </View>
       </View>
     </View>

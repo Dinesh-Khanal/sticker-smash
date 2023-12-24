@@ -5,11 +5,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS } from "../constants/colors";
 import Button from "../components/button";
 import React from "react";
-import { PartThreeProp } from "../types";
+import { useRouter } from "expo-router";
 
-export default function PartThree({ navigation }: PartThreeProp) {
+export default function PartThree() {
+  const router = useRouter();
   return (
-    <SafeAreaView edges={["bottom", "left", "right"]} style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <LinearGradient
         style={{ flex: 1 }}
         colors={[COLORS.secondary, COLORS.primary]}
@@ -80,7 +81,7 @@ export default function PartThree({ navigation }: PartThreeProp) {
           <Button
             theme="primary"
             label="Join now"
-            onPress={() => navigation.navigate("SignUp")}
+            onPress={() => router.push("/sign-up")}
           />
           <View
             style={{
@@ -92,7 +93,7 @@ export default function PartThree({ navigation }: PartThreeProp) {
             }}
           >
             <Text style={styles.normal}>Already have an account?</Text>
-            <Pressable onPress={() => navigation.navigate("Login")}>
+            <Pressable onPress={() => router.push("/login")}>
               <Text
                 style={{
                   fontSize: 20,

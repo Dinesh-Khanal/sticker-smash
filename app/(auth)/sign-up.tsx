@@ -8,11 +8,11 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
-import { COLORS } from "../constants/colors";
+import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { auth } from "../../config/firebase";
 
 export default function SignUp() {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -96,14 +96,14 @@ export default function SignUp() {
         <View style={{ flexDirection: "row", gap: 8 }}>
           <View style={styles.imgBtn}>
             <Image
-              source={require("../assets/images/facebook.png")}
+              source={require("../../assets/images/facebook.png")}
               style={{ height: 40, width: 40 }}
             />
             <Text style={{ fontWeight: "500", fontSize: 16 }}>Facebook</Text>
           </View>
           <View style={styles.imgBtn}>
             <Image
-              source={require("../assets/images/google.png")}
+              source={require("../../assets/images/google.png")}
               style={{ height: 40, width: 40 }}
             />
             <Text style={{ fontWeight: "500", fontSize: 16 }}>Google</Text>

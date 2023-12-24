@@ -5,16 +5,23 @@ import { useEffect } from "react";
 import { fetchProduct } from "../redux/product-slice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Link } from "expo-router";
+import { useAuth } from "../hooks/useAuth";
+import { useRouter } from "expo-router";
 
 export default function PartTwo() {
+  const router = useRouter();
   const { pList, isLoading, errMessage } = useAppSelector(
     (state) => state.products
   );
   const dispatch = useAppDispatch();
-
+  const { user } = useAuth();
   useEffect(() => {
     dispatch(fetchProduct());
   }, []);
+  // if (!user) {
+  //   router.push("/part-three");
+  //   return;
+  // }
   if (isLoading) return <Text>Loading...</Text>;
   return (
     <SafeAreaView style={styles.productContainer}>
@@ -24,10 +31,7 @@ export default function PartTwo() {
         data={pList}
         numColumns={2}
         renderItem={({ item }) => (
-          <Link
-            href={{ pathname: "/product-detail", params: { product: item } }}
-            asChild
-          >
+          <Link href={`/${item.id}`} asChild>
             <Pressable style={styles.product}>
               <Image
                 source={{ uri: item.image }}
