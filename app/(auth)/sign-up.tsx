@@ -13,12 +13,15 @@ import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
+import { useAuth } from "../../hooks/useAuth";
+import { useRouter } from "expo-router";
 
 export default function SignUp() {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const router = useRouter();
+  const { user } = useAuth();
   const handleSubmit = async () => {
     if (email && password) {
       try {
@@ -28,7 +31,9 @@ export default function SignUp() {
       }
     }
   };
-
+  if (user) {
+    router.push("/part-two");
+  }
   return (
     <SafeAreaView>
       <View style={styles.container}>

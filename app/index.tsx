@@ -11,6 +11,7 @@ export default function Home() {
   const parts = [
     { screen: "part-one", label: "Part One" },
     { screen: "part-two", label: "Part Two" },
+    { screen: "part-three", label: "Part Three" },
   ];
 
   const handleLogout = async () => {

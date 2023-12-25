@@ -11,12 +11,15 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
 import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordShown, setIsPasswordShown] = useState(false);
-
+  const router = useRouter();
+  const { user } = useAuth();
   const handleSubmit = async () => {
     if (email && password) {
       try {
@@ -26,7 +29,9 @@ export default function Login() {
       }
     }
   };
-
+  if (user) {
+    router.push("/part-two");
+  }
   return (
     <View style={{ padding: 22 }}>
       <Text style={styles.subHeading}>Email address</Text>

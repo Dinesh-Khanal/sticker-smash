@@ -9,7 +9,7 @@ export default function Cart() {
   const { pList } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
   return (
-    <SafeAreaView edges={["bottom", "left", "right"]} style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       {cartItems.map((item) => {
         const product = pList.find((p) => p.id === item.productId);
         return (

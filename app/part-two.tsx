@@ -20,7 +20,6 @@ export default function PartTwo() {
   }, []);
   // if (!user) {
   //   router.push("/part-three");
-  //   return;
   // }
   if (isLoading) return <Text>Loading...</Text>;
   return (
